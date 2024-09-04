@@ -40,8 +40,7 @@ spec:
 By inspecting the RuntimeClass annotations, you can see the usable pod resources:
 
 ```json
-$ kubectl get runtimeclass seeweb-nvidia-1xa6000 \
-  -o jsonpath='{.metadata.annotations}' | jq
+$ kubectl get runtimeclass seeweb-nvidia-1xa6000 -o jsonpath='{.metadata.annotations}' | jq
 
 {
   "limits.k8s.gpu/cpu": "8000m",
@@ -144,8 +143,7 @@ Make sure your pod resources are aligned with the RuntimeClass; in case of doubt
 Depending on the GPU provider's capacity, the virtual node reflects the overall capacity for your RuntimeClasses. Check the capacity and the allocatable resources for your virtual node:
 
 ```json
-kubectl get node k8s.gpu \
-  -o jsonpath='{.status.capacity}{"\n"}{.status.allocatable}' | jq
+kubectl get node k8s.gpu -o jsonpath='{.status.capacity}{.status.allocatable}' | jq
 {
   "cpu": "63",
   "memory": "263567056Ki",
@@ -187,8 +185,7 @@ Then the virtual node's allocatable resources become:
 
 
 ```json
-kubectl get node k8s.gpu \
-  -o jsonpath='{.status.capacity}{"\n"}{.status.allocatable}' | jq
+kubectl get node k8s.gpu -o jsonpath='{.status.capacity}{.status.allocatable}' | jq
 
 {
   "cpu": "63",
@@ -207,8 +204,7 @@ kubectl get node k8s.gpu \
 Once you allocate all the capacity, the virtual node's allocatable resources will reflect accordingly:
 
 ```json
-kubectl get node k8s.gpu \
-  -o jsonpath='{.status.capacity}{"\n"}{.status.allocatable}' | jq
+kubectl get node k8s.gpu -o jsonpath='{.status.capacity}{.status.allocatable}' | jq
 
 {
   "cpu": "63",
@@ -283,7 +279,7 @@ The K8sGPU is a work-in-progress solution. As with many new technologies, it can
 - Pods cannot violate the [Pod Security Standard Baseline ](https://kubernetes.io/docs/concepts/security/pod-security-standards/) profile. 
 
 
-## Trobleshooting
+## Troubleshooting
 
 Pods running on the virtual node can be inspected as usual:
 
