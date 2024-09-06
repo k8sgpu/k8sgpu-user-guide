@@ -20,47 +20,77 @@ The typical user process begins with ML/IA platform teams installing the k8sGPU 
 
 ## FAQ
 
-    [Q] Is the K8sGPU agent free?
-    [A] Yes, the agent is free of charge. You just pay for the GPU usage.
+<details open>
+<summary><i>Is the K8sGPU agent free?</i></summary>
+Yes, the agent is free of charge. You just pay for the GPU usage.
+</details>
 
-    [Q] How do I install the k8sGPU agent?
-    [A] Install the k8sGPU agent on your Kubernetes cluster using Helm.
+<details open>
+<summary><i>How do I install the k8sGPU agent?</i></summary>
+Install the k8sGPU agent on your Kubernetes cluster using Helm.
+</details>
 
-    [Q] Which Kubernetes distributions are supported?
-    [A] K8sGPU agent runs on most of public Managed Kubernetes, as well as on-premise environments like Kubernetes vanilla and common distributions such as OpenShift, Tanzu, and Rancher. Local environments like k3s and kind are supported;
+<details open>
+<summary><i>Which Kubernetes distributions are supported?</i></summary>
+K8sGPU agent runs on most of public Managed Kubernetes, as well as on-premise environments like Kubernetes vanilla and common distributions such as OpenShift, Tanzu, and Rancher. Local environments like k3s and kind are supported;
+</details>
 
-    [Q] How do I schedule my pods on the virtual node?
-    [A] Schedule your pods on the virtual node by setting specific RuntimeClasses. In some cases, affinity rules and tolerations for virtual nodes are required, depending on your Kubernetes environment.
+<details open>
+<summary><i>How do I schedule my pods on the virtual node?</i></summary>
+Schedule your pods on the virtual node by setting specific RuntimeClasses. In some cases, affinity rules and tolerations for virtual nodes are required, depending on your Kubernetes environment.
+</details>
 
-    [Q] Which container images can I run in the pods?
-    [A] You can run any container image that is available from any accessible container registry. If you're new to containers, we recommend learning about container technology first.
+<details open>
+<summary><i>Which container images can I run in the pods?</i></summary>
+You can run any container image that is available from any accessible container registry. If you're new to containers, we recommend learning about container technology first.
+</details>
 
-    [Q] Can I run multiple pods on the same GPU?
-    [A] Yes, you can run multiple pods simultaneously on the same GPU, but be aware that GPU memory and processing time are shared among all your workloads.
+<details open>
+<summary><i>Can I run multiple pods on the same GPU?</i></summary>
+Yes, you can run multiple pods simultaneously on the same GPU, but be aware that GPU memory and processing time are shared among all your workloads.
+</details>
 
-    [A] How do I select the GPU type for my workloads?
-    [Q] K8sGPU supports multiple GPU types. To request a specific GPU, such as the Nvidia A100, refer to the corresponding Kubernetes RuntimeClass resource.
+<details open>
+<summary><i>How do I select the GPU type for my workloads?</i></summary>
+K8sGPU supports multiple GPU types. To request a specific GPU, such as the Nvidia A100, refer to the corresponding Kubernetes RuntimeClass resource.
+</details>
 
-    [A] Are the GPUs assigned to my pods shared with other users?
-    [Q] No, each GPU is exclusively assigned to a user and not shared.
+<details open>
+<summary><i>Are the GPUs assigned to my pods shared with other users?</i></summary>
+No, each GPU is exclusively assigned to a user and not shared.
+</details>
 
-    [A] Is Multi-Instance GPU (MIG) supported?
-    [Q] MIG support is currently in development and will be available soon.
+<details open>
+<summary><i>Is Multi-Instance GPU (MIG) supported?</i></summary>
+MIG support is currently in development and will be available soon.
+</details>
 
-    [A] Are my pods protected from other users?
-    [Q] Yes, your pods are isolated in a multi-tenant environment with strict network policies and are only exposed to the Internet as required.
+<details open>
+<summary><i>Are my pods protected from other users?</i></summary>
+Yes, your pods are isolated in a multi-tenant environment with strict network policies and are only exposed to the Internet as required.
+</details>
 
-    [A] How can I access my pod's APIs?
-    [Q] Pods on the virtual node run on a remote infrastructure and are not directly accessible within your local cluster. If your pod exposes an API, you can publish it on the Internet. Note that you are the only responsible for securing access to your API.
+<details open>
+<summary><i>How can I access my pod's APIs?</i></summary>
+Pods on the virtual node run on a remote infrastructure and are not directly accessible within your local cluster. If your pod exposes an API, you can publish it on the Internet. Note that you are the only responsible for securing access to your API.
+</details>
 
-    [A] What if I need private access to my pod's API?
-    [Q] Currently, pod APIs are only exposed to the public Internet as needed. We plan to offer private access via VPN in future updates.
+<details open>
+<summary><i>What if I need private access to my pod's API?</i></summary>
+Currently, pod APIs are only exposed to the public Internet as needed. We plan to offer private access via VPN in future updates.
+</details>
 
-    [A] What if my local Kubernetes loses connectivity to the GPU?
-    [Q] Your workloads will continue to run remotely. Once connectivity is restored, your pods will synchronize with their local counterparts.
+<details open>
+<summary><i>What if my local Kubernetes loses connectivity to the GPU?</i></summary>
+Your workloads will continue to run remotely. Once connectivity is restored, your pods will synchronize with their local counterparts.
+</details>
 
-    [A] Where do pods using remote GPUs store their data?
-    [Q] Pods can store and retrieve data from any accessible S3 bucket globally. Support of persistent storage will be released soon.
+<details open>
+<summary><i>Where do pods using remote GPUs store their data?</i></summary>
+Pods can store and retrieve data from any accessible S3 bucket globally. Support of persistent storage will be released soon.
+</details>
 
-    [A] How do I monitor GPU usage?
-    [Q] Later, we will introduce a dashboard for real-time monitoring and access to historical data.
+<details open>
+<summary><i>How do I monitor GPU usage?</i></summary>
+Later, we will introduce a dashboard for real-time monitoring and access to historical data.
+</details>
