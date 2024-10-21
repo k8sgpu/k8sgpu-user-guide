@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gromacs-benchmark
+  labels:
+    app: gromacs-benchmark
+spec:
+  runtimeClassName: seeweb-nvidia-1xa6000
+  containers:
+  - name: gromacs
+    image: gromacs/gromacs
+    command: ["/bin/bash", "-c"]
+    args:
+      - |
+        # Check if the GPU is available
+        nvidia-smi
+
+        # Run the GROMACS benchmark using the GPU
+        /gromacs/bin/gmx mdrun -deffnm md_0_1 -nb gpu
+
+        echo "Benchmark completed."
+  restartPolicy: Never
