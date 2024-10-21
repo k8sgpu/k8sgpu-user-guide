@@ -7,7 +7,7 @@ spec:
   runtimeClassName: seeweb-nvidia-1xl4
   containers:
   - name: nvidia
-    image: nvidia/cuda
+    image: nvidia/cuda:12.6.2-cudnn-runtime-ubuntu22.04
     command: ["/bin/bash", "-c"]
     args: ["sleep 3600"]
     imagePullPolicy: Always
