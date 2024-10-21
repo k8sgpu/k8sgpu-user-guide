@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nvidia-smi
+spec:
+  restartPolicy: OnFailure
+  runtimeClassName: seeweb-nvidia-1xl4
+  containers:
+  - name: nvidia
+    image: nvidia/cuda
+    command: ["/bin/bash", "-c"]
+    args: ["sleep 3600"]
+    imagePullPolicy: Always
