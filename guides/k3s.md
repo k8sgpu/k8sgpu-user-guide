@@ -16,5 +16,4 @@ reload conf and restart:
 ```
 sudo systemctl daemon-reload
 sudo systemctl restart k3s
-
 ```
