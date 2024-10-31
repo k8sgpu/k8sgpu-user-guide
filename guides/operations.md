@@ -226,7 +226,7 @@ Pods running on virtual node can use ConfigMap and Secrets as regular Kubernetes
 
 > Note: Support of Persistent Volumes is going to be released soon.  
 
-## Access to Applliations
+## Access to Applications
 
 When enabled by the remote GPUs Service Provider, pods running on the GPU can be accessed only from the public Internet by creating a Kubernetes Service in your local cluster with `type=LoadBalancer` and `loadBalancerClass=k8s.gpu` as in the following example:
 
