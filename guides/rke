@@ -1,0 +1,42 @@
+Enabling Cluster Signing in RKE (Rancher Kubernetes Engine)
+
+When running Rancher 2.4.5 with Kubernetes 1.18.10, you may encounter issues related to certificate signing by the kube-controller-manager. This typically occurs because the controller-manager is missing the necessary certificate and key used for signing.
+Problem
+
+The Kubernetes controller-manager requires access to the cluster signing certificate and key in order to sign new certificates (e.g., for kubelets). Without these, certificate operations may fail or be incomplete.
+Solution
+
+To resolve this, you need to provide the appropriate certificate and key files to the kube-controller section in your cluster.yml file using the extra_args directive.
+
+    🔥 Important: Make sure to add this under the correct kube-controller section! Other components (like kubelet) also support extra_args, and placing these values in the wrong section will not work and can lead to wasted troubleshooting time.
+
+Patch Example
+
+Here’s the diff-style patch that needs to be applied:
+                                                                                                                                
+   kube-controller:
+     cluster_cidr: 10.233.64.0/18
+     service_cluster_ip_range: 10.233.0.0/18
++    extra_args:
++      cluster-signing-cert-file: /etc/kubernetes/ssl/kube-ca.pem
++      cluster-signing-key-file: /etc/kubernetes/ssl/kube-ca-key.pem
+   scheduler:
+   kubelet:
+     cluster_domain: cluster.local
+
+Explanation of Parameters
+
+    cluster-signing-cert-file: Path to the cluster CA certificate.
+
+    cluster-signing-key-file: Path to the cluster CA key.
+
+These parameters tell the kube-controller-manager which certificate authority to use when signing new kubelet certificates.
+Additional Tips
+
+    Always double-check the indentation and placement of your extra_args.
+
+    After applying changes, you must redeploy the cluster using rke up.
+
+    Backup your existing cluster.yml before editing.
+                                                                                                                                
+This issue is discussed in detail in [RKE GitHub Issue #546](https://github.com/rancher/rke/issues/546).
