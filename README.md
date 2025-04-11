@@ -18,6 +18,8 @@ The typical user process begins with ML/IA platform teams installing the k8sGPU 
 * [Operations](guides/operations.md)
 * [Usage from Public Cloud](guides/public-cloud.md)
 * [Usage from K3S](guides/k3s.md)
+* [Usage from RKE](guides/rke.md)
+
 
 ## FAQ
 
